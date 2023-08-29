@@ -1,0 +1,48 @@
+@import './hamburger_settings';
+@import 'hamburgers/_sass/hamburgers/hamburgers';
+
+.app-mobile-menu {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-mobile-menu-link {
+  padding: var(--app-menu-link-padding);
+  font-size: var(--app-menu-link-font-size);
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+
+  &.router-link-exact-active {
+    color: var(--lagoon-blue);
+  }
+}
+
+.app-mobile-dialog {
+  width: 100%;
+  top: var(--app-header);
+  margin: 0;
+  max-width: initial;
+  padding: 0;
+  // stylelint-disable-next-line
+  height: calc(100dvh - var(--app-header));
+  border: none;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--minified-mauve);
+
+  &::backdrop {
+    display: none;
+  }
+}
+
+.hamburger-inner {
+  transition: none;
+
+
+  &::before, &::after {
+    transition: none;
+  }
+}

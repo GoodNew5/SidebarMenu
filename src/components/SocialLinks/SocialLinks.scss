@@ -1,0 +1,80 @@
+@import '@/styles/breakpoints';
+
+.social-links {
+  border-radius: 1.8rem;
+  background-color: var(--celeste2);
+  border: .4rem var(--black) solid;
+  height: 12rem;
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &::before {
+    content: '';
+    display: block;
+    background: linear-gradient(0deg, #050402 0%, #050402 100%), #A259FF;
+    position: absolute;
+    top: 1.6rem;
+    width: calc(100% + 1.8rem);
+    left: -.4rem;
+    right: 0;
+    border-radius: 1.8rem;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .home-page & {
+    @include breakpoint('HANDS') {
+      position: relative;
+      height: 10rem;
+      top: -5rem;
+      width: 50rem;
+      max-width: 50rem;
+    }
+  }
+
+  .app-mobile-dialog & {
+    height: 8rem;
+    flex-grow: 0;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    width: 29rem;
+  }
+}
+
+
+.social-icon {
+  width: 8rem;
+  height: 8rem;
+
+  .app-mobile-dialog & {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+.social-icon-github {
+  width: 6rem;
+  height: 6rem;
+
+  .app-mobile-dialog & {
+    height: 4rem;
+    width: 4rem;
+  }
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  transition: .3s;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+

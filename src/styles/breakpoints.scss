@@ -1,0 +1,53 @@
+// stylelint-disable
+
+/**
+  оринтируемся на эргономику устройства
+  hands – устройство которое держим двумя руками (обычно планшет)
+  lap – ноут лежит на коленках
+  desk – настольный пк
+**/
+
+$hands: 768px;
+$lap: 1024px;
+$desk: 1280px;
+
+$breakpoints: (
+  'TO_HANDS': $hands - 1,
+  'HANDS': $hands,
+  'TO_LAP': $lap - 1,
+  'LAP': $lap,
+  'TO_DESK': $desk - 1,
+  'DESK': $desk
+);
+
+:export {
+  @each $key, $value in $breakpoints {
+    #{unquote($key)}: $value,
+  }
+}
+
+@mixin breakpoint($point) {
+  @if $point == TO_HANDS {
+    @media (max-width: $hands - 1) { @content; }
+  }
+
+  @if $point == HANDS {
+    @media (min-width: $hands) { @content; }
+  }
+
+  @else if $point == TO_LAP {
+    @media (max-width: $lap - 1) { @content; }
+  }
+
+  @else if $point == LAP {
+    @media (min-width: $lap) { @content; }
+  }
+
+  @else if $point == TO_DESK {
+    @media (max-width: $desk - 1)  { @content; }
+  }
+
+  @else if $point == DESK {
+    @media (min-width: $desk)  { @content; }
+  }
+}

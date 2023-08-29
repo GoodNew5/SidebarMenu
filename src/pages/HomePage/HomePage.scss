@@ -1,0 +1,123 @@
+@import '@/styles/breakpoints';
+
+.home-page-sidebar {
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint('TO_HANDS') {
+    flex-grow: 1;
+  }
+
+  @include breakpoint('HANDS') {
+    flex-shrink: 0;
+    width: 30rem;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    border-right: .2rem solid var(--gray);
+  }
+}
+
+.home-page {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+
+  @include breakpoint('TO_HANDS')  {
+    flex-direction: column;
+  }
+
+  @include breakpoint('HANDS') {
+    flex-direction: row;
+  }
+}
+
+.home-page-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.home-page-show-easter {
+  @include breakpoint('TO_LAP') {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.home-page-show-easter-button {
+  border-radius: .5rem;
+  background: var(--carbon);
+  padding: 1.6rem 0;
+  width: 29rem;
+  color: var(--white);
+  font-size: 1.8rem;
+  font-weight: 500;
+  border: .3rem transparent solid;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--celeste);
+      box-shadow: .4rem .4rem 0 0 var(--black);
+      color: var(--black);
+      border-color: var(--carbon);
+    }
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.home-page-show-easter-wrapper {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint('HANDS') {
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  @include breakpoint('LAP') {
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.home-page-iframe {
+  height: 100% !important;
+}
+
+.home-page-illustration {
+  @include breakpoint('HANDS')  {
+    height: 50rem;
+    min-width: 40rem;
+  }
+}
+
+.home-page-show-easter-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-page-disclaimer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.home-page-emoji {
+  font-size: 5rem;
+  display: block;
+  margin-top: 1.2rem;
+}

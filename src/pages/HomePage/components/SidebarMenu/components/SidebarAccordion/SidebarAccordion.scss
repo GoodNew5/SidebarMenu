@@ -1,0 +1,149 @@
+.sidebar-accordion {
+  --sidebar-accordion-arrow-width: 1.5rem;
+  --sidebar-accordion-arrow-height: 1.5rem;
+  --sidebar-accordion-arrow-margin-right: .5rem;
+  --sidebar-accordion-root-outside-padding-left: 1rem;
+  --sidebar-accordion-arrow-button-width: 3rem;
+  --sidebar-accordion-arrow-button-height: initial;
+  --sidebar-accordion-base-padding-left: var(--sidebar-accordion-arrow-button-width);
+  --sidebar-accordion-arrow-button-width-root-level: 4rem;
+  --sidebar-accordion-header-padding: 1rem 1rem 1rem 0;
+  --sidebar-accordion-header-font-size: 1.6rem;
+  --sidebar-accordion-dot-width: .5rem;
+  --sidebar-accordion-dot-height: .5rem;
+  --sidebar-accordion-dot-distance: .2rem;
+
+  position: relative;
+
+  &.sidebar-accordion-0-level {
+    padding-left: 0;
+
+    &:not(.sidebar-accordion-is-collapsible) {
+      padding-left: calc(var(--sidebar-accordion-arrow-button-width) + var(--sidebar-accordion-root-outside-padding-left));
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: var(--affen-turquoise);
+        }
+      }
+    }
+  }
+}
+
+.sidebar-accordion-icon {
+  width: var(--sidebar-accordion-arrow-width);
+  height: var(--sidebar-accordion-arrow-height);
+  color: var(--davys-grey);
+  transform: rotate(-90deg);
+  position: relative;
+  left: .5rem;
+
+  .sidebar-accordion-is-open > .sidebar-accordion-item > .sidebar-accordion-header > .sidebar-accordion-arrow-button > & {
+    transform: rotate(360deg);
+  }
+
+  .sidebar-accordion-0-level > .sidebar-accordion-item > .sidebar-accordion-header > .sidebar-accordion-arrow-button > & {
+    color: var(--black);
+  }
+
+  .sidebar-accordion-item-is-active > .sidebar-accordion-item > .sidebar-accordion-header > .sidebar-accordion-arrow-button > & {
+    color: var(--black);
+  }
+}
+
+.sidebar-accordion-arrow-button {
+  width: 2.5rem;
+  height: var(--sidebar-accordion-arrow-button-height);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: .5rem;
+
+  .sidebar-accordion-0-level > .sidebar-accordion-item > .sidebar-accordion-header > & {
+    justify-content: center;
+    width: var(--sidebar-accordion-arrow-button-width-root-level);
+    margin-right: 0;
+  }
+}
+
+.sidebar-accordion-item {
+  .sidebar-accordion-content & {
+    padding: 0 0 0 calc(var(--sidebar-accordion-base-padding-left) * var(--sidebar-accordion-level));
+  }
+
+  .sidebar-accordion-item-is-active > & {
+    background-color: var(--celeste);
+    color: var(--black);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--celeste);
+
+      .sidebar-accordion-header,
+      .sidebar-accordion-icon {
+        color: var(--black);
+      }
+
+      .sidebar-accordion-header {
+        &::before {
+          background-color: var(--black) !important;
+        }
+      }
+    }
+  }
+
+  .sidebar-accordion-0-level:not(.sidebar-accordion-is-collapsible) > & {
+    background-color: transparent;
+  }
+}
+
+.sidebar-accordion-header {
+  display: flex;
+  font-size: var(--sidebar-accordion-header-font-size);
+  padding: var(--sidebar-accordion-header-padding);
+  color: var(--davys-grey);
+  position: relative;
+
+  .sidebar-accordion-item-is-active & {
+    color: var(--black);
+
+    &::before {
+      background-color: var(--black) !important;
+    }
+  }
+
+  .sidebar-accordion:not(.sidebar-accordion-is-collapsible) & {
+    &::before {
+      content: '';
+      display: block;
+      width: var(--sidebar-accordion-dot-width);
+      height: var(--sidebar-accordion-dot-height);
+      border-radius: 50%;
+      background-color: var(--davys-grey);
+      position: absolute;
+      left: calc(0rem - var(--sidebar-accordion-dot-width));
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+  }
+
+  .sidebar-accordion-0-level > .sidebar-accordion-item > & {
+    font-weight: 600;
+    color: var(--black);
+
+    &::before {
+      left: calc(0rem - var(--sidebar-accordion-dot-width) - var(--sidebar-accordion-dot-distance) - 1.4rem);
+    }
+  }
+
+  .sidebar-accordion-1-level > .sidebar-accordion-item > & {
+    font-weight: 500;
+  }
+
+  .sidebar-accordion-content > .sidebar-accordion:not(.sidebar-accordion-is-collapsible) > .sidebar-accordion-item > & {
+    padding-left: 1rem;
+    margin-left: 1.5rem;
+  }
+}

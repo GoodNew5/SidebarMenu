@@ -1,0 +1,84 @@
+@import '@/styles/breakpoints';
+
+.app-header {
+  height: var(--app-header);
+  border-bottom: .2rem solid var(--gray);
+  flex-shrink: 0;
+  font-weight: 800;
+  font-family: var(--jetbrains-font-family);
+  display: flex;
+}
+
+.app-logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.app-header-menu {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.app-menu-link {
+  display: flex;
+  align-items: center;
+  padding: var(--app-menu-link-padding);
+  font-size: var(--app-menu-link-font-size);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--celeste);
+    }
+  }
+}
+
+.app-menu-link-text {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -.5rem;
+    right: 0;
+    left: 0;
+    height: .3rem;
+
+    .router-link-active & {
+      background-color: var(--black);
+    }
+  }
+}
+
+.app-logo {
+  padding-left: var(--app-wrapper-padding);
+  width: var(--app-logo-width);
+  height: var(--app-logo-height);
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  @include breakpoint('HANDS') {
+    min-height: 0;
+  }
+}
+
+.app-footer {
+  padding: 1rem;
+  border-top: .2rem solid var(--gray);
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  @include breakpoint('HANDS') {
+    min-height: 0;
+  }
+}
